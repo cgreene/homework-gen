@@ -1,0 +1,16 @@
+llm:
+  default_model: "gpt-4"
+  api_key: "your-openai-api-key-here"  # Set via environment variable OPENAI_API_KEY
+  base_url: null  # Optional: Custom API endpoint (e.g., for Azure OpenAI)
+  local_models:
+    - "ollama/llama2"
+    - "ollama/mistral"
+
+pdf:
+  theme: "classroom"
+  font_family: "Arial"
+  page_size: "letter"
+
+generation:
+  default_count: 5
+  default_difficulty: "medium"

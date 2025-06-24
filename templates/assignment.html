@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        {{ styles }}
+    </style>
+</head>
+<body>
+    <div class="assignment">
+        <header>
+            <h1>{{ title }}</h1>
+            <div class="metadata">
+                <span><strong>Grade Level:</strong> {{ grade_level }}</span>
+                <span><strong>Subject:</strong> {{ subject }}</span>
+                <span><strong>Difficulty:</strong> {{ difficulty }}</span>
+                <span><strong>Estimated Time:</strong> {{ estimated_time }}</span>
+            </div>
+        </header>
+        
+        {% if learning_objectives %}
+        <section class="learning-objectives">
+            <h2>Learning Objectives</h2>
+            <ul>
+                {% for objective in learning_objectives %}
+                <li>{{ objective }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+        
+        <section class="instructions">
+            <h2>Instructions</h2>
+            <p>{{ instructions }}</p>
+        </section>
+        
+        {% if materials_needed %}
+        <section class="materials">
+            <h2>Materials Needed</h2>
+            <ul>
+                {% for material in materials_needed %}
+                <li>{{ material }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+        
+        <section class="problems">
+            <h2>Problems</h2>
+            <ol>
+                {% for problem in problems %}
+                <li class="problem">{{ problem }}</li>
+                {% endfor %}
+            </ol>
+        </section>
+    </div>
+</body>
+</html>

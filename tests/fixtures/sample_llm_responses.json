@@ -1,0 +1,41 @@
+{
+  "assignments": [
+    {
+      "title": "Assignment 1: Basic Addition",
+      "grade_level": "2nd Grade",
+      "subject": "Mathematics", 
+      "difficulty": "Easy",
+      "estimated_time": "10 minutes",
+      "instructions": "Solve the following addition problems. Show your work.",
+      "problems": [
+        "5 + 3 = ?",
+        "12 + 7 = ?",
+        "8 + 6 = ?",
+        "15 + 4 = ?"
+      ],
+      "materials_needed": ["pencil", "paper"],
+      "learning_objectives": [
+        "Students will add single-digit numbers",
+        "Students will add two-digit numbers"
+      ]
+    },
+    {
+      "title": "Assignment 2: Simple Subtraction", 
+      "grade_level": "2nd Grade",
+      "subject": "Mathematics",
+      "difficulty": "Easy", 
+      "estimated_time": "12 minutes",
+      "instructions": "Complete these subtraction problems carefully.",
+      "problems": [
+        "10 - 4 = ?",
+        "18 - 9 = ?", 
+        "15 - 6 = ?",
+        "20 - 12 = ?"
+      ],
+      "materials_needed": ["pencil"],
+      "learning_objectives": [
+        "Students will subtract single-digit numbers from larger numbers"
+      ]
+    }
+  ]
+}

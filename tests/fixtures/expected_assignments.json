@@ -1,0 +1,21 @@
+[
+  {
+    "title": "Assignment 1: Basic Addition",
+    "grade_level": "2nd Grade", 
+    "subject": "Mathematics",
+    "difficulty": "Easy",
+    "estimated_time": "10 minutes",
+    "instructions": "Solve the following addition problems. Show your work.",
+    "problems": [
+      "5 + 3 = ?",
+      "12 + 7 = ?", 
+      "8 + 6 = ?",
+      "15 + 4 = ?"
+    ],
+    "materials_needed": ["pencil", "paper"],
+    "learning_objectives": [
+      "Students will add single-digit numbers",
+      "Students will add two-digit numbers"
+    ]
+  }
+]

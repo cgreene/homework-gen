@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "homework-generator"
+version = "1.0.0"
+description = "AI-powered homework packet generator - create professional PDFs from simple topic descriptions"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Homework Generator Contributors"}
+]
+keywords = ["education", "homework", "ai", "pdf", "generator", "assignments"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Text Processing :: Markup :: HTML",
+    "Topic :: Printing",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "litellm>=1.0.0",
+    "click>=8.0.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "jinja2>=3.0.0",
+    "jsonschema>=4.0.0",
+    "pyyaml>=6.0.0",
+    "weasyprint>=60.0",
+    "markdown>=3.4.0",
+    "rich>=13.0.0",
+    "tenacity>=8.0.0",
+    "diskcache>=5.6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-mock>=3.10.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "ruff>=0.1.0",
+    "mypy>=1.5.0",
+]
+
+[project.scripts]
+homework-gen = "homework_generator.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/your-username/homework-generator"
+Repository = "https://github.com/your-username/homework-generator"
+Issues = "https://github.com/your-username/homework-generator/issues"
+Documentation = "https://github.com/your-username/homework-generator#readme"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["homework_generator*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.coverage.run]
+source = ["homework_generator"]
+omit = ["*/tests/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError"
+]
