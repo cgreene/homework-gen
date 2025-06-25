@@ -73,20 +73,28 @@ homework-gen "short stories with comprehension questions" \
 
 ```bash
 # Math for different grades
-homework-gen "multiplication tables" --grade-level "3rd Grade" --count 4
-homework-gen "quadratic equations" --grade-level "9th Grade" --difficulty hard
+homework-gen "multiplication tables" --template math --grade-level "3rd Grade" --count 4
+homework-gen "quadratic equations" --template math --grade-level "9th Grade" --difficulty hard
 
 # Science topics
-homework-gen "solar system" --grade-level "4th Grade" --count 3
-homework-gen "chemical reactions" --grade-level "10th Grade" --difficulty medium
+homework-gen "solar system" --template science --grade-level "4th Grade" --count 3
+homework-gen "chemical reactions" --template science --grade-level "10th Grade" --difficulty medium
 
 # Language arts
-homework-gen "creative writing prompts" --grade-level "6th Grade"
-homework-gen "grammar exercises" --grade-level "5th Grade" --count 5
+homework-gen "creative writing prompts" --template english --grade-level "6th Grade"
+homework-gen "grammar exercises" --template english --grade-level "5th Grade" --count 5
 
 # History and social studies
-homework-gen "American Revolution" --grade-level "8th Grade" --difficulty medium
-homework-gen "community helpers" --grade-level "1st Grade" --count 2
+homework-gen "American Revolution" --template social_studies --grade-level "8th Grade" --difficulty medium
+homework-gen "community helpers" --template social_studies --grade-level "1st Grade" --count 2
+
+# Computer science and technology
+homework-gen "programming basics" --template computer_science --grade-level "7th Grade"
+homework-gen "digital citizenship" --template computer_science --grade-level "5th Grade"
+
+# Arts and creative subjects
+homework-gen "watercolor painting" --template art --grade-level "4th Grade"
+homework-gen "music theory basics" --template music --grade-level "6th Grade"
 ```
 
 ### Sample Generated Content
@@ -144,15 +152,56 @@ homework-gen [TOPIC] [OPTIONS]
 
 Required:
   TOPIC                Topic for the homework (e.g., "fractions", "photosynthesis")
+                      Optional when using --list-templates
+
+Required Options:
   --grade-level TEXT   Grade level (e.g., "5th Grade", "High School")
 
 Optional:
   --count INTEGER      Number of assignments (default: 5)
   --difficulty TEXT    Difficulty level: easy, medium, hard (default: medium)
+  --template TEXT      Subject-specific template (default: generic)
+                      Use --list-templates to see all available options
   --output TEXT        Output PDF filename (auto-generated if not specified)
   --verbose           Show detailed progress information
+  --list-templates    Show all available prompt templates
   --help              Show this help message
 ```
+
+### 🎨 Using Subject-Specific Templates
+
+The system includes specialized templates for different subjects. Use the `--template` flag to get better, more focused results:
+
+```bash
+# List all available templates
+homework-gen --list-templates
+
+# Use specific templates for better results
+homework-gen "algebra equations" --template math --grade-level "8th Grade"
+homework-gen "photosynthesis" --template science --grade-level "7th Grade" 
+homework-gen "creative writing" --template english --grade-level "6th Grade"
+homework-gen "American Revolution" --template social_studies --grade-level "8th Grade"
+homework-gen "programming loops" --template computer_science --grade-level "9th Grade"
+homework-gen "watercolor techniques" --template art --grade-level "5th Grade"
+```
+
+Available templates include:
+- `math` - Mathematics and arithmetic
+- `science` - General science topics
+- `english` - Language arts, writing, literature
+- `social_studies` - History, geography, civics
+- `computer_science` - Programming, algorithms, digital citizenship
+- `art` - Visual arts, art history, techniques
+- `music` - Music theory, performance, composition
+- `health` - Personal health, nutrition, safety
+- `physical_education` - Fitness, sports, movement
+- `world_languages` - Foreign language learning
+- `psychology` - Human behavior, mental health
+- `economics` - Economic systems, personal finance
+- `philosophy` - Critical thinking, ethics, logic
+- `environmental_science` - Ecology, sustainability
+- `career_technical` - Vocational skills, workplace readiness
+- `generic` - Fallback for any topic
 
 ## ⚙️ Configuration
 

@@ -22,7 +22,7 @@ console = Console()
 
 
 @click.command()
-@click.argument("topic", type=str)
+@click.argument("topic", type=str, required=False)
 @click.option(
     "--count",
     "-c",
@@ -63,7 +63,7 @@ console = Console()
     "-t",
     default="generic",
     show_default=True,
-    help="Prompt template to use (auto-detected from topic if not specified)",
+    help="Prompt template to use. Available: math, science, english, social_studies, computer_science, art, music, health, etc. Use --list-templates to see all options.",
 )
 @click.option(
     "--config", type=click.Path(exists=True), help="Path to configuration file"
@@ -74,8 +74,13 @@ console = Console()
     is_flag=True,
     help="Enable verbose output with detailed progress information",
 )
+@click.option(
+    "--list-templates",
+    is_flag=True,
+    help="List all available prompt templates and exit",
+)
 def main(
-    topic: str,
+    topic: Optional[str],
     count: int,
     difficulty: str,
     grade_level: str,
@@ -84,6 +89,7 @@ def main(
     template: str,
     config: Optional[str],
     verbose: bool,
+    list_templates: bool,
 ) -> None:
     """Generate homework packets using AI.
 
@@ -95,11 +101,35 @@ def main(
     Examples: "fractions", "photosynthesis", "World War 2 timeline"
 
     \b
+    Template Usage:
+      Use --template to specify a subject-specific template for better results:
+      homework-gen "algebra" --template math --grade-level "8th Grade"
+      homework-gen "photosynthesis" --template science --grade-level "7th Grade"
+      homework-gen "creative writing" --template english --grade-level "6th Grade"
+
+    \b
     Examples:
       homework-gen "algebra basics" --count 3 --difficulty easy --grade-level "8th Grade"
       homework-gen "cell biology" --grade-level "7th Grade" --verbose
       homework-gen "creative writing prompts" --grade-level "3rd Grade" --output stories.pdf
     """
+    if list_templates:
+        # List available templates and exit
+        from .prompt_templates import PromptTemplateManager
+        template_manager = PromptTemplateManager()
+        templates = template_manager.get_available_templates()
+        
+        console.print("[bold green]Available Prompt Templates:[/bold green]")
+        console.print()
+        for template_name in sorted(templates):
+            console.print(f"  [blue]{template_name}[/blue]")
+        console.print()
+        console.print("[dim]Use with: homework-gen \"topic\" --template TEMPLATE_NAME --grade-level \"Grade\"[/dim]")
+        return
+
+    if not topic:
+        raise click.ClickException("TOPIC is required when not using --list-templates")
+
     if verbose:
         console.print(
             f"[bold green]📚 Generating {count} {difficulty} assignments on: {topic}"
