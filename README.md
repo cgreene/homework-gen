@@ -1,17 +1,17 @@
-# Homework Packet Generator
+# Homework Generator
 
-A production-ready Python command-line tool that generates printable homework packets as PDFs using AI. Transform simple topic descriptions into professional, multi-page homework assignments with beautiful formatting.
+A production-ready Python CLI tool that generates custom homework assignments as beautiful PDFs using AI. Perfect for teachers, parents, and tutors who need personalized educational content.
 
 ## ✨ Features
 
-- 🎯 **AI-Powered Content** - Generate assignments using OpenAI GPT models
-- 📄 **Professional PDFs** - Beautiful, print-ready homework packets
-- 🎨 **Smart Formatting** - HTML/CSS-based layouts with custom styling
-- 🧠 **Subject Detection** - Automatic subject classification (Math, Science, English, History)
-- 📊 **Difficulty Scaling** - Adjustable complexity and question counts
-- 💾 **Cost-Effective** - Local caching reduces API costs during development
-- 🔧 **Extensible** - Easy to add new subjects, templates, and styling
-- 🎪 **Rich CLI** - Beautiful terminal interface with progress bars
+- 🤖 **AI-Powered Content** - Uses OpenAI GPT models to generate engaging assignments
+- 📄 **Professional PDFs** - Beautiful, print-ready homework packets with custom styling
+- 🎯 **Flexible Topics** - Works with any subject: math, science, history, language arts, etc.
+- 📊 **Customizable Difficulty** - Easy, medium, or hard assignments
+- 🎓 **Grade-Specific** - Tailored content for any grade level (K-12)
+- 💾 **Smart Caching** - Reduces API costs by caching responses
+- 🎨 **Professional Layout** - Clean HTML/CSS templates for consistent formatting
+- 🖥️ **Rich CLI** - Beautiful terminal interface with progress bars
 
 ## 🚀 Quick Start
 
@@ -19,153 +19,212 @@ A production-ready Python command-line tool that generates printable homework pa
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/your-username/homework-gen.git
 cd homework-gen
 
-# Install with pip (recommended)
+# Install the package
 pip install -e .
-
-# Or install dependencies manually
-pip install -r requirements.txt
 ```
 
-### Configuration
+### Setup
 
-1. **Set up your OpenAI API key:**
-```bash
-export OPENAI_API_KEY="your-api-key-here"
-```
+1. **Get an OpenAI API key** from [OpenAI's website](https://platform.openai.com/api-keys)
 
-2. **Configure the application (optional):**
-```bash
-# Copy the example configuration
-cp config.example.yaml config.yaml
+2. **Set your API key** (choose one method):
+   ```bash
+   # Option 1: Environment variable (recommended)
+   export OPENAI_API_KEY="your-api-key-here"
+   
+   # Option 2: Configuration file
+   cp config.example.yaml config.yaml
+   # Edit config.yaml and add your API key
+   ```
 
-# Edit with your preferences
-vim config.yaml
-```
-
-**⚠️ Security Note:** Never commit real API keys to version control. Use environment variables or local config files.
+3. **Test the installation**:
+   ```bash
+   homework-gen --help
+   ```
 
 ### Basic Usage
 
-```bash
-# Generate math homework
-homework-gen "fractions for 5th grade" --count 3 --difficulty medium
+**⚠️ Important**: You must specify a grade level for all assignments.
 
-# Custom options
+```bash
+# Generate basic math homework
+homework-gen "fractions" --grade-level "5th Grade"
+
+# Generate science homework with custom options
 homework-gen "photosynthesis" \
+  --grade-level "7th Grade" \
   --count 5 \
   --difficulty hard \
-  --grade-level "7th Grade" \
-  --output biology_homework.pdf \
-  --verbose
+  --output my_homework.pdf
 
-# See all options
-homework-gen --help
+# Generate reading comprehension for elementary
+homework-gen "short stories with comprehension questions" \
+  --grade-level "3rd Grade" \
+  --count 3 \
+  --difficulty easy
 ```
 
-## 📋 Examples
+## 📚 Examples
 
-### Generated Content Preview
+### Command Examples
+
+```bash
+# Math for different grades
+homework-gen "multiplication tables" --grade-level "3rd Grade" --count 4
+homework-gen "quadratic equations" --grade-level "9th Grade" --difficulty hard
+
+# Science topics
+homework-gen "solar system" --grade-level "4th Grade" --count 3
+homework-gen "chemical reactions" --grade-level "10th Grade" --difficulty medium
+
+# Language arts
+homework-gen "creative writing prompts" --grade-level "6th Grade"
+homework-gen "grammar exercises" --grade-level "5th Grade" --count 5
+
+# History and social studies
+homework-gen "American Revolution" --grade-level "8th Grade" --difficulty medium
+homework-gen "community helpers" --grade-level "1st Grade" --count 2
+```
+
+### Sample Generated Content
 
 ```markdown
-# Fraction Practice
+# Fraction Practice Worksheet
 
 **Grade Level:** 5th Grade  
 **Subject:** Mathematics  
 **Difficulty:** Medium  
-**Estimated Time:** 20 minutes  
+**Estimated Time:** 25 minutes  
 
 ## Learning Objectives
-- Add fractions with different denominators
-- Simplify fractions to lowest terms
-- Convert fractions to decimals
+- Add and subtract fractions with like denominators
+- Identify equivalent fractions
+- Convert improper fractions to mixed numbers
 
 ## Problems
-1. What is 1/2 + 1/4? (Show your work)
-2. Simplify the fraction 8/12
-3. Convert 3/4 to a decimal
-4. Which is larger: 2/3 or 3/5?
+
+1. Add the fractions: 2/8 + 3/8 = ___
+
+2. Which fraction is equivalent to 1/2?
+   a) 2/6  b) 3/6  c) 4/6  d) 5/6
+
+3. Convert to a mixed number: 11/4 = ___
+
+[... more problems ...]
+
+## Answer Key
+1. 5/8
+2. b) 3/6
+3. 2¾
 ```
 
-### Sample CLI Output
+### CLI Output
 
 ```
 📚 Generating 3 medium assignments on: fractions for 5th grade
-Using model: gpt-3.5-turbo
-Grade level: 5th Grade
+🤖 Using model: gpt-4o-mini
+🎓 Grade level: 5th Grade
 
 Creating assignment requests...  ████████████████████████████████████ 100%
 Generating assignment content... ████████████████████████████████████ 100%
 Formatting assignments...        ████████████████████████████████████ 100%
 Generating PDF...               ████████████████████████████████████ 100%
 
-✓ Generated 3 assignments in PDF: homework_packet_fractions_20250623_181121.pdf
-📄 File size: 16,378 bytes
+✅ Generated homework packet: homework_packet_fractions_for_5th_grade_20250623_185803.pdf
+📄 File size: 847 KB | 3 assignments | 12 pages
 ```
 
-## 🏗️ Architecture
-
-### Core Components
-
-The system follows a clean, modular architecture leveraging proven external libraries:
-
-```
-homework_generator/
-├── cli.py              # Rich CLI interface with Click
-├── models.py           # Pydantic data models  
-├── config.py           # Configuration management
-├── llm_client.py       # OpenAI integration with caching
-├── content_generator.py # Assignment generation logic
-├── prompt_templates.py # Jinja2 template system
-├── formatter.py        # HTML/CSS formatting
-└── pdf_generator.py    # WeasyPrint PDF generation
-```
-
-### External Libraries
-
-**Why we chose best-in-class libraries instead of custom implementations:**
-
-| Component | Library | Why |
-|-----------|---------|-----|
-| **CLI** | `click` + `rich` | Industry standard CLI framework with beautiful output |
-| **AI Integration** | `litellm` + `openai` | Unified interface for 100+ LLM providers |
-| **PDF Generation** | `weasyprint` | CSS-based PDFs with professional typography |
-| **Data Validation** | `pydantic` | Type-safe models with automatic validation |
-| **Templates** | `jinja2` | Flexible, secure template engine |
-| **Testing** | `pytest` | De facto standard for Python testing |
-| **Caching** | `diskcache` | Persistent, thread-safe caching |
-
-This approach ensures:
-- 🛡️ **Reliability** - Battle-tested libraries with millions of users
-- 🚀 **Performance** - Optimized implementations
-- 📖 **Maintainability** - Standard APIs and documentation
-- 🔧 **Extensibility** - Easy to add features and integrations
-
-## 🧪 Testing & Development
-
-### Run Tests
+## 🛠️ Command Line Options
 
 ```bash
-# Run all tests
-pytest tests/ -v
+homework-gen [TOPIC] [OPTIONS]
 
-# Run specific test modules
-pytest tests/test_models.py tests/test_cli.py -v
+Required:
+  TOPIC                Topic for the homework (e.g., "fractions", "photosynthesis")
+  --grade-level TEXT   Grade level (e.g., "5th Grade", "High School")
+
+Optional:
+  --count INTEGER      Number of assignments (default: 5)
+  --difficulty TEXT    Difficulty level: easy, medium, hard (default: medium)
+  --output TEXT        Output PDF filename (auto-generated if not specified)
+  --verbose           Show detailed progress information
+  --help              Show this help message
+```
+
+## ⚙️ Configuration
+
+The tool supports configuration via:
+1. Environment variables (highest priority)
+2. `config.yaml` file
+3. Built-in defaults (lowest priority)
+
+### Configuration File
+
+Copy `config.example.yaml` to `config.yaml` and customize:
+
+```yaml
+llm:
+  default_model: "gpt-4o-mini"        # OpenAI model to use
+  api_key: "${OPENAI_API_KEY}"        # Your API key (use env var)
+  base_url: null                      # Custom API endpoint (optional)
+
+generation:
+  default_count: 5                    # Default number of assignments
+  default_difficulty: "medium"        # Default difficulty level
+
+pdf:
+  theme: "classroom"                  # PDF styling theme
+  font_family: "Arial"               # Font for PDFs
+  page_size: "letter"                # Page size (letter, a4, etc.)
+```
+
+**🔒 Security Note**: Never commit your real API key to version control. Use environment variables or keep `config.yaml` local.
+
+## 🏗️ Project Structure
+
+```
+homework-gen/
+├── homework_generator/         # Main Python package
+│   ├── cli.py                 # Command-line interface
+│   ├── models.py              # Data models and validation
+│   ├── config.py              # Configuration management
+│   ├── llm_client.py          # OpenAI API integration
+│   ├── content_generator.py   # Assignment generation logic
+│   ├── prompt_templates.py    # AI prompt management
+│   ├── formatter.py           # HTML formatting
+│   └── pdf_generator.py       # PDF creation
+├── templates/                  # HTML/CSS templates
+│   ├── assignment.html        # Main assignment template
+│   ├── styles.css            # PDF styling
+│   └── prompts/              # AI prompt templates
+│       ├── math.md
+│       ├── generic.md
+│       └── ...
+├── tests/                     # Test suite
+├── config.example.yaml       # Example configuration
+├── requirements.txt          # Dependencies
+└── README.md                # This file
+```
+
+## 🧪 Development
+
+### Running Tests
+
+```bash
+# Install development dependencies
+pip install -r requirements-dev.txt
+
+# Run all tests
+pytest
 
 # Run with coverage
-pytest tests/ --cov=homework_generator --cov-report=html
-```
+pytest --cov=homework_generator
 
-### Try the Demo
-
-```bash
-# See the system in action
-python demo.py
-
-# Run integration tests
-python test_integration.py
+# Run specific test files
+pytest tests/test_cli.py -v
 ```
 
 ### Code Quality
@@ -174,497 +233,101 @@ python test_integration.py
 # Format code
 black homework_generator/ tests/
 
-# Type checking
-mypy homework_generator/
+# Check formatting
+black --check homework_generator/
 
-# Linting
-flake8 homework_generator/
+# Lint code
+ruff check homework_generator/
 ```
 
-## 📁 Project Structure
+### Demo and Integration Tests
 
-```
-homework-gen/
-├── homework_generator/         # Main package
-│   ├── __init__.py
-│   ├── cli.py                 # Command-line interface
-│   ├── models.py              # Data models
-│   ├── config.py              # Configuration
-│   ├── llm_client.py          # LLM integration
-│   ├── content_generator.py   # Assignment generation
-│   ├── prompt_templates.py    # Template system
-│   ├── formatter.py           # HTML/CSS formatting
-│   └── pdf_generator.py       # PDF generation
-├── templates/                  # Templates and styling
-│   ├── prompts/               # LLM prompt templates
-│   │   ├── math.md
-│   │   ├── science.md
-│   │   └── generic.md
-│   ├── assignment.html        # HTML template
-│   └── styles.css             # PDF styling
-├── tests/                     # Test suite
-├── config.yaml               # Configuration file
-├── requirements.txt          # Dependencies
-├── requirements-dev.txt      # Development dependencies
-├── pyproject.toml           # Project metadata
-├── demo.py                  # Demo script
-└── README.md               # This file
-```
+```bash
+# Try the demo
+python demo.py
 
-## ⚙️ Configuration
-
-The system uses a hierarchical configuration approach:
-
-1. **Environment Variables** (highest priority)
-2. **config.yaml file**
-3. **Default values** (lowest priority)
-
-### Configuration Options
-
-```yaml
-llm:
-  api_key: "${OPENAI_API_KEY}"    # OpenAI API key
-  model: "gpt-3.5-turbo"          # Model to use
-  base_url: null                  # Custom API endpoint
-
-generation:
-  default_count: 5                # Default number of assignments
-  default_difficulty: "medium"    # Default difficulty level
-  default_grade_level: "5th Grade" # Default grade level
-
-pdf:
-  default_theme: "classroom"      # PDF styling theme
-  include_answer_key: false       # Include answer keys (future)
-
-cache:
-  enabled: true                   # Enable LLM response caching
-  directory: "llm_cache"          # Cache directory
+# Run integration tests
+python test_integration.py
 ```
 
 ## 🔧 Extending the System
 
-### Adding New Subjects
+### Adding Custom Prompts
 
-1. Create a prompt template in `templates/prompts/`:
+Create new prompt templates in `templates/prompts/`:
+
 ```markdown
-# templates/prompts/chemistry.md
-Generate chemistry assignments for {{grade_level}} students on {{topic}}.
+<!-- templates/prompts/chemistry.md -->
+# Chemistry Assignment Generator
 
-Include:
-- Lab safety reminders
-- Chemical equations
-- Real-world applications
+Generate {{count}} chemistry assignments for {{grade_level}} students on: {{topic}}
+
+Requirements:
+- Include safety reminders
+- Use age-appropriate language
+- Add real-world applications
+- Difficulty: {{difficulty}}
 ```
 
-2. The system automatically detects and uses new templates.
+### Customizing PDF Appearance
 
-### Custom PDF Styling
+Edit the templates:
+- `templates/assignment.html` - Layout and structure
+- `templates/styles.css` - Colors, fonts, spacing
 
-1. Edit `templates/styles.css` for global styling
-2. Modify `templates/assignment.html` for layout changes
-3. Both support full HTML/CSS features
+### Adding New Models
 
-### Adding New LLM Providers
+The system supports any OpenAI-compatible API:
 
-The system uses `litellm` which supports 100+ providers out of the box:
-
-```python
-# Just change the model name
-llm_client = LLMClient(model="claude-3-sonnet")  # Anthropic
-llm_client = LLMClient(model="ollama/llama2")    # Local via Ollama
+```yaml
+# Use different models
+llm:
+  default_model: "gpt-4"              # More capable model
+  default_model: "gpt-3.5-turbo"     # Faster and cheaper
 ```
 
-## 🛠️ Development
+## 📋 Troubleshooting
 
-### Setting Up Development Environment
+### Common Issues
 
+**"No API key found"**
 ```bash
-# Clone and setup
-git clone <repository-url>
-cd homework-gen
-python -m venv .venv
-source .venv/bin/activate  # or .venv\Scripts\activate on Windows
-
-# Install in development mode
-pip install -e .
-pip install -r requirements-dev.txt
-
-# Run tests
-pytest
+# Make sure your API key is set
+echo $OPENAI_API_KEY
+export OPENAI_API_KEY="your-key-here"
 ```
 
-### Contributing
+**"Grade level is required"**
+```bash
+# Always specify grade level
+homework-gen "fractions" --grade-level "5th Grade"
+```
 
-1. **Code Style**: Use `black` for formatting, `mypy` for type checking
-2. **Tests**: Add tests for new features in `tests/`
-3. **Documentation**: Update README and docstrings
-4. **Templates**: Test new prompt templates thoroughly
+**"Permission denied" on PDF**
+```bash
+# Make sure the output directory is writable
+homework-gen "math" --grade-level "3rd Grade" --output ~/Desktop/homework.pdf
+```
+
+### Getting Help
+
+- Check `homework-gen --help` for all options
+- Look at `demo.py` for working examples
+- Review the test files in `tests/` for usage patterns
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- **OpenAI** - For the GPT models that power content generation
-- **WeasyPrint** - For excellent HTML-to-PDF conversion
-- **Click** - For the beautiful CLI framework
-- **Rich** - For terminal styling and progress bars
-- **Pydantic** - For data validation and configuration management
+Built with excellent open-source tools:
+- [OpenAI](https://openai.com/) - GPT models for content generation
+- [Click](https://click.palletsprojects.com/) - Command-line interface framework
+- [Rich](https://rich.readthedocs.io/) - Beautiful terminal output
+- [WeasyPrint](https://weasyprint.org/) - HTML to PDF conversion
+- [Pydantic](https://pydantic.dev/) - Data validation and settings
 
 ---
 
-**Made with ❤️ for educators, parents, and students everywhere.**
-```
-SYSTEM: You are an expert educator creating homework assignments.
-
-[TEMPLATE CONTENT FROM .md FILE - RENDERED WITH USER PARAMETERS]
-
-OUTPUT FORMAT:
-You must respond with valid JSON containing an array of assignments.
-Each assignment must follow this exact structure:
-
-{json_schema}
-
-EXAMPLES:
-{few_shot_examples_from_json_file}
-
-USER REQUEST: {user_description}
-
-Remember: Respond ONLY with valid JSON. No additional text or explanations.
-```
-
-### Template Files
-
-Templates are stored as Markdown files in `templates/prompts/` and loaded dynamically:
-
-**Math Template** (`templates/prompts/math.md`):
-```markdown
-# Mathematics Assignment Generation
-
-You are creating {count} mathematics assignments for {grade_level} students on the topic: **{topic}**
-
-## Focus Areas
-- Clear, step-by-step problems
-- Age-appropriate complexity  
-- Practical applications when possible
-- Variety in problem types
-
-## Difficulty Guidelines
-- **Easy**: Basic recall and simple applications
-- **Medium**: Multi-step problems requiring reasoning  
-- **Hard**: Complex problems requiring multiple concepts
-
-**Target Difficulty**: {difficulty}
-
-## Output Requirements
-Generate exactly {count} assignments following the JSON schema provided in the system prompt.
-```
-
-**Reading Comprehension Template** (`templates/prompts/reading.md`):
-```markdown  
-# Reading Comprehension Assignment Generation
-
-Create {count} reading comprehension assignments for {grade_level} students on: **{topic}**
-
-## Requirements
-- Age-appropriate reading passages (200-500 words for elementary, 500-800 for middle school)
-- Comprehension questions of varying types:
-  * Literal understanding (who, what, when, where)
-  * Inferential reasoning (why, how, implications)
-  * Critical thinking (analysis, evaluation, connections)
-- Vocabulary exercises related to the passage
-
-## Difficulty Level: {difficulty}
-- **Easy**: Simple passages with basic comprehension questions
-- **Medium**: More complex passages with inferential questions
-- **Hard**: Advanced passages requiring critical analysis
-
-## Content Guidelines
-- Ensure passages are engaging and age-appropriate
-- Include diverse topics and perspectives
-- Avoid controversial or sensitive subjects unless specifically requested
-```
-
-### Output Validation
-
-The system includes robust parsing and validation:
-
-1. **JSON Schema Validation**: Ensures LLM output matches expected structure
-2. **Content Sanitization**: Removes potentially problematic formatting
-3. **Fallback Handling**: Retry with simplified prompts if parsing fails
-4. **Quality Checks**: Validates assignment coherence and appropriateness
-
-### Error Handling
-
-- **Malformed JSON**: Attempt to extract assignments using regex patterns
-- **Missing Fields**: Provide sensible defaults for optional fields
-- **Content Issues**: Flag inappropriate content and regenerate
-- **Model Failures**: Graceful degradation to simpler models or manual templates
-
-## Workflow
-
-1. **Command Line Input**
-   ```bash
-   python -m homework_generator "Algebra practice for 7th grade" --count 5 --difficulty medium
-   ```
-
-2. **Template Selection & Prompt Generation**
-   - Load appropriate template from `templates/prompts/{subject}.md` (user specifies or defaults to generic)
-   - Render template with user parameters using Jinja2
-   - Load few-shot examples from `templates/examples/{subject}.json`
-   - Combine into final structured prompt
-
-3. **LLM Query**
-   - Send structured prompt to configured LLM (local or remote)
-   - Parse JSON response into Assignment objects
-   - Validate against schema and retry if malformed
-
-4. **Content Processing**
-   - Convert Assignment objects to standardized Markdown
-   - Apply consistent formatting and styling
-   - Add metadata headers and page break markers
-
-5. **PDF Generation**
-   - Convert Markdown to HTML with CSS styling
-   - Generate PDF with one assignment per page
-   - Include header/footer with assignment numbers
-
-6. **Output**
-   - Save PDF to specified location
-   - Provide summary of generated assignments
-
-## Command Line Interface
-
-```bash
-# Basic usage
-homework-gen "Fractions for 5th grade"
-
-# Advanced options
-homework-gen "Reading comprehension on space exploration" \
-  --count 10 \
-  --difficulty hard \
-  --grade-level 8 \
-  --output space_homework.pdf \
-  --model gpt-4 \
-  --template reading \
-  --theme classroom
-
-# Use local model
-homework-gen "Basic arithmetic" --model ollama/llama2 --template math
-```
-
-## Configuration
-
-The tool supports configuration via:
-- Command line arguments (highest priority)
-- Environment variables
-- `config.yaml` file in project directory (copy from `config.example.yaml`)
-- Default values
-
-**⚠️ Security:** Use environment variables for sensitive data like API keys.
-
-Example `config.yaml`:
-```yaml
-llm:
-  default_model: "gpt-4"
-  api_key: "your-openai-api-key-here"  # Set via OPENAI_API_KEY env var
-  local_models:
-    - "ollama/llama2"
-    - "ollama/mistral"
-
-pdf:
-  theme: "classroom"
-  font_family: "Arial"
-  page_size: "letter"
-
-generation:
-  default_count: 5
-  default_difficulty: "medium"
-```
-
-## Testing Strategy
-
-### Unit Tests
-- **LLM Client**: Mock API responses, test error handling
-- **Content Generator**: Validate prompt generation and response parsing
-- **Formatter**: Test Markdown processing and edge cases
-- **PDF Generator**: Verify PDF structure without visual checks
-- **CLI**: Test argument parsing and command execution
-
-### Integration Tests
-- **End-to-End**: Generate actual homework packets with mock LLM
-- **Local Model**: Test with actual Ollama integration
-- **File I/O**: Verify PDF creation and file handling
-
-### Test Data
-- Sample LLM responses for different subjects (`tests/fixtures/sample_llm_responses.json`)
-- Expected Markdown outputs (`tests/fixtures/expected_assignments.json`)  
-- Template rendering tests (`tests/fixtures/test_prompts.json`)
-- Mock template files for testing (`tests/fixtures/templates/`)
-
-## Project Structure
-
-```
-homework-gen/
-├── homework_generator/
-│   ├── __init__.py
-│   ├── cli.py
-│   ├── llm_client.py
-│   ├── content_generator.py
-│   ├── prompt_templates.py
-│   ├── formatter.py
-│   ├── pdf_generator.py
-│   ├── config.py
-│   └── models.py
-├── tests/
-│   ├── __init__.py
-│   ├── test_cli.py
-│   ├── test_llm_client.py
-│   ├── test_content_generator.py
-│   ├── test_prompt_templates.py
-│   ├── test_formatter.py
-│   ├── test_pdf_generator.py
-│   └── fixtures/
-│       ├── sample_llm_responses.json
-│       ├── expected_assignments.json
-│       └── test_prompts.json
-├── templates/
-│   ├── assignment.html
-│   ├── styles.css
-│   ├── prompts/
-│   │   ├── math.md
-│   │   ├── reading.md
-│   │   ├── science.md
-│   │   ├── history.md
-│   │   ├── writing.md
-│   │   └── generic.md
-│   └── examples/
-│       ├── math.json
-│       ├── reading.json
-│       ├── science.json
-│       ├── history.json
-│       └── writing.json
-├── config.yaml
-├── requirements.txt
-├── requirements-dev.txt
-├── pyproject.toml
-├── .gitignore
-└── README.md
-```
-
-## Installation
-
-```bash
-# Clone repository
-git clone <repo-url>
-cd homework-gen
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Install in development mode
-pip install -e .
-```
-
-## Development
-
-```bash
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Run tests
-pytest
-
-# Run with coverage
-pytest --cov=homework_generator
-
-# Format code
-black homework_generator tests
-isort homework_generator tests
-
-# Type checking
-mypy homework_generator
-```
-
-## Examples
-
-### Generated Assignment Structure
-Each assignment will be generated as JSON, then converted to this Markdown format:
-```markdown
-# Assignment 1: Basic Fractions
-
-**Grade Level:** 5th Grade  
-**Subject:** Mathematics  
-**Difficulty:** Medium  
-**Estimated Time:** 15 minutes  
-**Materials Needed:** Pencil, calculator  
-
-## Learning Objectives
-- Students will add and subtract fractions with different denominators
-- Students will simplify fractions to lowest terms
-
-## Instructions
-Complete the following fraction problems. Show your work for each problem.
-
-## Problems
-1. What is 1/2 + 1/4?
-2. Simplify 6/8 to its lowest terms.
-3. A pizza is cut into 8 slices. If you eat 3 slices, what fraction of the pizza did you eat?
-...
-```
-
-### JSON Schema for LLM Responses
-```json
-{
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "type": "object",
-  "properties": {
-    "assignments": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "title": {"type": "string"},
-          "grade_level": {"type": "string"},
-          "subject": {"type": "string"},
-          "difficulty": {"type": "string", "enum": ["Easy", "Medium", "Hard"]},
-          "estimated_time": {"type": "string"},
-          "instructions": {"type": "string"},
-          "problems": {"type": "array", "items": {"type": "string"}},
-          "materials_needed": {"type": "array", "items": {"type": "string"}},
-          "learning_objectives": {"type": "array", "items": {"type": "string"}}
-        },
-        "required": ["title", "grade_level", "subject", "difficulty", "instructions", "problems"]
-      }
-    }
-  },
-  "required": ["assignments"]
-}
-```
-
-## Future Enhancements
-
-- Web interface for non-technical users
-- Integration with learning management systems
-- Support for different languages
-- Answer key generation
-- Progress tracking and analytics
-- Collaborative assignment creation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Write tests for new functionality
-4. Implement the feature
-5. Ensure all tests pass
-6. Submit a pull request
-
-## License
-
-MIT License
+**Made with ❤️ for educators everywhere.**
